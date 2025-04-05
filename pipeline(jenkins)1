@@ -1,39 +1,8 @@
-pipeline {
-    agent any
-
-    stages {
-        stage('Clone Repo') {
-            steps {
-                echo '🔁 Cloning the GitHub repository...'
-            }
-        }
-
-        stage('Build') {
-            steps {
-                echo '🔨 Building the project...'
-            }
-        }
-
-        stage('Test') {
-            steps {
-                echo '🧪 Running tests...'
-            }
-        }
-
-        stage('Deploy') {
-            steps {
-                echo '🚀 Deploying the project...'
-            }
-        }
-    }
-
-    post {
-        success {
-            echo '✅ Pipeline completed successfully!'
-        }
-        failure {
-            echo '❌ Pipeline failed.'
-        }
+stage('Clone from GitHub') {
+    steps {
+        git 'https://github.com/your-username/your-repo.git'
+        echo '📥 Code cloned successfully!'
     }
 }
+
 
