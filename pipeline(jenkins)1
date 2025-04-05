@@ -2,20 +2,44 @@ pipeline {
     agent any
 
     stages {
-        stage('Build') {
+        stage('📥 Clone Repository') {
             steps {
-                echo '🔨 Building the project...'
+                echo "\u001B[34m🔁 Cloning from GitHub...\u001B[0m"
+                git 'https://github.com/YOUR-USERNAME/YOUR-REPO-NAME.git'
             }
         }
-        stage('Test') {
+
+        stage('🔨 Build') {
             steps {
-                echo '🧪 Running tests...'
+                echo "\u001B[32m✅ Building the project...\u001B[0m"
+                // Simulated build step
+                sh 'echo Build successful!'
             }
         }
-        stage('Deploy') {
+
+        stage('🧪 Test') {
             steps {
-                echo '🚀 Deploying the project...'
+                echo "\u001B[33m🧪 Running tests...\u001B[0m"
+                // Simulated test step
+                sh 'echo All tests passed!'
             }
+        }
+
+        stage('🚀 Deploy') {
+            steps {
+                echo "\u001B[35m🚀 Deploying the project...\u001B[0m"
+                // Simulated deploy step
+                sh 'echo Deployed successfully!'
+            }
+        }
+    }
+
+    post {
+        success {
+            echo "\u001B[32m🎉 Pipeline completed successfully!\u001B[0m"
+        }
+        failure {
+            echo "\u001B[31m❌ Pipeline failed. Check logs.\u001B[0m"
         }
     }
 }
